@@ -85,7 +85,7 @@ In this case, although we've only explicitly defined the Template, all of the
 other objects have been created in the background. This is easily verified using
 the Ember Inspector.
 
-!['about' View, inspected](https://cloud.githubusercontent.com/assets/388761/13951032/cb29d842-f004-11e5-8ca6-79c35793bb4b.png)
+!['about' View, inspected](https://cloud.githubusercontent.com/assets/13922520/21613747/8404a0fa-d1a4-11e6-8ef0-00e03b5e01e8.png)
 
 As you can see, even though we didn't create them, there exist a Route, a
 Controller, and a View that are tied in to the template we've just created.
