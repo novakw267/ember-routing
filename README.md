@@ -27,7 +27,7 @@ By the end of this, developers should be able to:
 ## Code-Along: Routing to Templates
 
 Start the front-end server with `ember serve`, and open the application by
-navigating to `http://localhost:4200`.
+navigating to `http://localhost:7165`.
 
 When you do, you should see a page that looks like this:
 
@@ -68,7 +68,7 @@ Router.map(function() {
 });
 ```
 
-Having made this change, if we navigate to `http://localhost:4200/about` we
+Having made this change, if we navigate to `http://localhost:7165/about` we
 should see the following.
 
 !['about' View](https://cloud.githubusercontent.com/assets/388761/13951020/b5f539da-f004-11e5-8a1a-c08a2927036f.png)
