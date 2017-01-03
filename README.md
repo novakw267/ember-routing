@@ -99,6 +99,7 @@ could have a link pointing from our main page to our About page.
 To that end, Ember provides us with a Handlebars helper called `{{#link-to}}`
 that allows us to create links from one route to another.
 
+`app/application/template.hbs`
 ```html
 <nav>
   {{#link-to 'about'}}About{{/link-to}}
@@ -111,9 +112,10 @@ About page.
 While we're at it, let's add another link back to the main page, so we can get
 back.
 
-```html
+`app/application/template.hbs`
+```diff
 <nav>
-  {{#link-to 'application'}}Home{{/link-to}}
++  {{#link-to 'application'}}Home{{/link-to}}
   {{#link-to 'about'}}About{{/link-to}}
 </nav>
 ```
