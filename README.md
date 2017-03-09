@@ -38,7 +38,7 @@ When you do, you should see a page that looks like this:
 !['application' View](https://cloud.githubusercontent.com/assets/388761/13950977/80dd0174-f004-11e5-900a-255e97ec4da1.png)
 
 As you may recall from the Overview lesson, the content for this default View,
-'application', is determined by `app/application/template.hbs`. Let's look
+'application', is determined by `app/templates/application.hbs`. Let's look
 inside that file for a moment.
 
 ```html
@@ -53,9 +53,9 @@ within each other like a tree, just like the URLs that map to them -
 'application' View.
 
 Let's create one of those new Views and see how it works. Run the command `ember
-g template about` in the console; it should create a new directory `app/about`,
-with a file inside it called `template.hbs`. Let's write some new HTML into that
-file:
+g template about` in the console; it should create a new file, `about.hbs`,
+inside the `templates` directory.
+Let's write some new HTML into that file:
 
 ```html
 <h3> About This App </h3>
@@ -103,7 +103,7 @@ could have a link pointing from our main page to our About page.
 To that end, Ember provides us with a Handlebars helper called `{{#link-to}}`
 that allows us to create links from one route to another.
 
-`app/application/template.hbs`
+`app/templates/appication.hbs`
 ```html
 <nav>
   {{#link-to 'about'}}About{{/link-to}}
@@ -116,7 +116,7 @@ About page.
 While we're at it, let's add another link back to the main page, so we can get
 back.
 
-`app/application/template.hbs`
+`app/templates/application.hbs`
 ```diff
 <nav>
 +  {{#link-to 'application'}}Home{{/link-to}}
@@ -194,8 +194,7 @@ Router.map(function() {
 
 Next, we need to set up our Templates. The appropriate syntax to use in the
 generator is `ember g template team/something` - this will let ember-cli know to
-create a `something` directory (containing a Template file) inside `app/team`,
-much like how the `team` directory is nested within `app`.
+create a `app/templates/team` and a `something.hbs` file inside that directory.
 
 Here's some content we can use for each of those nested templates.
 
@@ -203,7 +202,7 @@ The `{{#link-to}}` helpers referring back to the 'team' Template are not
 strictly necessary, but are nice for UI reasons.
 
 ```html
-<!-- team/leadership -->
+<!-- team/leadership.hbs -->
 <h5>Leadership Team</h5>
 <ul>
   <li>Person One</li>
@@ -214,7 +213,7 @@ strictly necessary, but are nice for UI reasons.
 ```
 
 ```html
-<!-- team/engineering -->
+<!-- team/engineering.hbs -->
 <h5>Engineering Team</h5>
 <ul>
   <li>Person Four</li>
@@ -265,7 +264,7 @@ Let's create an index template for the 'team' page.
 ember g template team/index
 ```
 
-The above will create `index/template.hbs` within the `team/` repository.
+The above will create `team/index.hbs` within the `templates/` repository.
 
 ## Lab: Nested Templates
 
@@ -310,15 +309,15 @@ create a Route object. As you may recall from the Ember Overview lesson, the
 purposes of the Route object are (1) to parse the URL for a given route, and (2)
 to use information from that URL to load model data.
 
-Generating this Route object is fairly easy. In the case of a `products` route,
-we can do this by running the command `ember g route products`; this will create
-_two_ new files in the `app/products` directory, a Route file and a Template
-file.
+Generating this Route object is fairly straightforward. In the case of a
+`products` route, we can do this by running the command
+`ember g route products`; this will create _two_ new files:
+`app/routes/products.js` and `app/templates/products.hbs`.
 
 Let's take a closer look at that Route file.
 
 ```javascript
-// app/products/route.js
+// app/routes/products.js
 
 import Ember from 'ember';
 
@@ -332,7 +331,7 @@ some data object that gets used within the route. In this case, let us suppose
 that the `model` method returns an array of JavaScript objects, like so:
 
 ```javascript
-// app/products/route.js
+// app/routes/products.js
 
 import Ember from 'ember';
 
@@ -364,10 +363,11 @@ export default Ember.Route.extend({
 
 If we wanted to access this data from a Template, we can do so by referencing a
 property called `model` from within the Template, which points back to the
-result of the model function from the Route. Let's make a change to the `products` Template so that it shows the names of the products listed above.
+result of the model function from the Route. Let's make a change to the
+`products` Template so that it shows the names of the products listed above.
 
 ```html
-<!-- app/products/template.hbs -->
+<!-- app/templates/products.hbs -->
 
 <!-- {{outlet}} -->
 <h2> Product Listings </h2>
@@ -430,7 +430,7 @@ primary instance of this. Let's create a new Route for `product` (`ember g route
 product`).
 
 ```javascript
-// app/products/route.js
+// app/routes/product.js
 
 import Ember from 'ember';
 
@@ -447,7 +447,7 @@ from `params` (`:product_id` is stored at `params.product_id`), we can use it to
 look up the data we want.
 
 ```javascript
-// app/product/route.js
+// app/routes/product.js
 
 import Ember from 'ember';
 
@@ -481,7 +481,7 @@ Since our Route has a `model` method, we can now access the data from that
 method in the Route's corresponding Template.
 
 ```html
-<!-- app/product/template.hbs -->
+<!-- app/templates/product.hbs -->
 
 <!-- {{outlet}} -->
 
@@ -492,7 +492,7 @@ method in the Route's corresponding Template.
 {{#link-to 'products'}}Back to Product Listings{{/link-to}}
 ```
 
-Now if we navigate to `http://localhost:4200/products/3`, we can now see
+Now if we navigate to `http://localhost:7165/products/3`, we can now see
 information about the third product on our page.
 
 Since this now works, let's make one final change: replacing the hard-coded HTML
@@ -500,7 +500,7 @@ in the `products` template with `{{#link-to}}` helpers pointing to the specific
 pages for each product.
 
 ```html
-<!-- app/products/template.hbs -->
+<!-- app/templates/products.hbs -->
 
 <!-- {{outlet}} -->
 
