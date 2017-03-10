@@ -3,7 +3,7 @@
 module.exports = function (environment) {
   'use strict';
   const ENV = {
-    modulePrefix: 'ga-wdi-boston.ember-routing-static',
+    modulePrefix: 'ga-wdi-boston.ember-routing',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
