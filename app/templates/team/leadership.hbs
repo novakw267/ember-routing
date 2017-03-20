@@ -1,8 +1,10 @@
 <!-- team/leadership.hbs -->
-<h5>Leadership Team</h5>
+<h2> Leadership Team </h2>
 <ul>
-  <li>Person One</li>
-  <li>Person Two</li>
-  <li>Person Three</li>
+{{#each model as |leadership|}}
+  <h4><li>{{leadership.name}}</li></h4>
+  <li>{{leadership.age}}</li>
+  <li>{{leadership.dedication}}</li>
+{{/each}}
 </ul>
 {{#link-to 'team'}}Back{{/link-to}}

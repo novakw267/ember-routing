@@ -11,11 +11,15 @@ Router.map(function () {
   this.route('team', function(){
     this.route('engineering');
     this.route('leadership');
+    this.route('sales');
   });
   this.route('contact', function(){
     this.route('nyc');
     this.route('boston');
   });
+  this.route('products');
+  this.route('product');
+  this.route('product', { path: '/products/:product_id'});
 });
 
 export default Router;

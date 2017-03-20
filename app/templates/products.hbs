@@ -1,0 +1,10 @@
+<h2> Product Listings </h2>
+<ul>
+  {{!-- Model is returning what is in the model function
+  in the routes file. The each is structuring the list items
+  and the list item is listing each product name --}}
+{{#each model as |product|}}
+  <li>{{product.name}}</li>
+{{/each}}
+</ul>
+{{outlet}}
